@@ -1,4 +1,11 @@
-body {
+.jumbotron {
 
-    color: blue;
+    background-color: brown;
+}
+
+.container {
+
+    text-align: center;
+    color: whitesmoke;
+   
 }
