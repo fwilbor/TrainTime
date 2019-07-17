@@ -8,6 +8,10 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/style.css">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- Link to Moment.js should go here -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 
 </head>
 
@@ -29,6 +33,46 @@
 
 
         <div id="trainContainer">
+            <div id="trainContainer">
+                <div class="row">
+                    <div id="train-name-input" class="col-sm"></div>
+                    <div id="destination-input" class="col-sm"></div>
+                    <div id="frequency-input" class="col-sm"></div>
+                    <div id="first-train-input" class="col-sm"></div>
+                    <div class="col-sm">
+                        Minutes Away
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <!-- Current Train-->
+                    <div class="card mb-4">
+                        <div class="card-header">Current Train</div>
+                        <div class="card-body">
+                            <table class="table table-sm table-hover" id="currentTrain">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Train Name</th>
+                                        <th scope="col">Destination</th>
+                                        <th id="date" scope="col">Date</th>
+                                        <th scope="col">Frequency (min)</th>
+                                        <th scope="col">Next Arrival</th>
+                                        <th scope="col">Minutes Away</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="train1">
             <div class="row">
                 <div class="col-sm">
                     Train Name
@@ -47,189 +91,167 @@
                 </div>
             </div>
         </div>
-
-    </div>
-    <div id="train1">
-        <div class="row">
-            <div class="col-sm">
-                Train Name
-            </div>
-            <div class="col-sm">
-                Destination
-            </div>
-            <div class="col-sm">
-                Frequency (min)
-            </div>
-            <div class="col-sm">
-                Next Arrival
-            </div>
-            <div class="col-sm">
-                Minutes Away
-            </div>
-        </div>
-    </div>
-    <div id="train2">
-        <div class="row">
-            <div class="col-sm">
-                Train Name
-            </div>
-            <div class="col-sm">
-                Destination
-            </div>
-            <div class="col-sm">
-                Frequency (min)
-            </div>
-            <div class="col-sm">
-                Next Arrival
-            </div>
-            <div class="col-sm">
-                Minutes Away
+        <div id="train2">
+            <div class="row">
+                <div class="col-sm">
+                    Train Name
+                </div>
+                <div class="col-sm">
+                    Destination
+                </div>
+                <div class="col-sm">
+                    Frequency (min)
+                </div>
+                <div class="col-sm">
+                    Next Arrival
+                </div>
+                <div class="col-sm">
+                    Minutes Away
+                </div>
             </div>
         </div>
-    </div>
-    <div id="train3">
-        <div class="row">
-            <div class="col-sm">
-                Train Name
-            </div>
-            <div class="col-sm">
-                Destination
-            </div>
-            <div class="col-sm">
-                Frequency (min)
-            </div>
-            <div class="col-sm">
-                Next Arrival
-            </div>
-            <div class="col-sm">
-                Minutes Away
-            </div>
-        </div>
-    </div>
-    <div id="train4">
-        <div class="row">
-            <div class="col-sm">
-                Train Name
-            </div>
-            <div class="col-sm">
-                Destination
-            </div>
-            <div class="col-sm">
-                Frequency (min)
-            </div>
-            <div class="col-sm">
-                Next Arrival
-            </div>
-            <div class="col-sm">
-                Minutes Away
+        <div id="train3">
+            <div class="row">
+                <div class="col-sm">
+                    Train Name
+                </div>
+                <div class="col-sm">
+                    Destination
+                </div>
+                <div class="col-sm">
+                    Frequency (min)
+                </div>
+                <div class="col-sm">
+                    Next Arrival
+                </div>
+                <div class="col-sm">
+                    Minutes Away
+                </div>
             </div>
         </div>
-    </div>
-    <div id="train5">
-        <div class="row">
-            <div class="col-sm">
-                Train Name
-            </div>
-            <div class="col-sm">
-                Destination
-            </div>
-            <div class="col-sm">
-                Frequency (min)
-            </div>
-            <div class="col-sm">
-                Next Arrival
-            </div>
-            <div class="col-sm">
-                Minutes Away
-            </div>
-        </div>
-    </div>
-    <div id="train6">
-        <div class="row">
-            <div class="col-sm">
-                Train Name
-            </div>
-            <div class="col-sm">
-                Destination
-            </div>
-            <div class="col-sm">
-                Frequency (min)
-            </div>
-            <div class="col-sm">
-                Next Arrival
-            </div>
-            <div class="col-sm">
-                Minutes Away
+        <div id="train4">
+            <div class="row">
+                <div class="col-sm">
+                    Train Name
+                </div>
+                <div class="col-sm">
+                    Destination
+                </div>
+                <div class="col-sm">
+                    Frequency (min)
+                </div>
+                <div class="col-sm">
+                    Next Arrival
+                </div>
+                <div class="col-sm">
+                    Minutes Away
+                </div>
             </div>
         </div>
-    </div>
-    <div id="train7">
-        <div class="row">
-            <div class="col-sm">
-                Train Name
-            </div>
-            <div class="col-sm">
-                Destination
-            </div>
-            <div class="col-sm">
-                Frequency (min)
-            </div>
-            <div class="col-sm">
-                Next Arrival
-            </div>
-            <div class="col-sm">
-                Minutes Away
+        <div id="train5">
+            <div class="row">
+                <div class="col-sm">
+                    Train Name
+                </div>
+                <div class="col-sm">
+                    Destination
+                </div>
+                <div class="col-sm">
+                    Frequency (min)
+                </div>
+                <div class="col-sm">
+                    Next Arrival
+                </div>
+                <div class="col-sm">
+                    Minutes Away
+                </div>
             </div>
         </div>
-    </div>
-    <br>
-
-
-
-    <div id="addTrain">
-        <div class="alert alert-primary" role="alert">
-            Add Train
+        <div id="train6">
+            <div class="row">
+                <div class="col-sm">
+                    Train Name
+                </div>
+                <div class="col-sm">
+                    Destination
+                </div>
+                <div class="col-sm">
+                    Frequency (min)
+                </div>
+                <div class="col-sm">
+                    Next Arrival
+                </div>
+                <div class="col-sm">
+                    Minutes Away
+                </div>
+            </div>
         </div>
-        <form>
-            <div class="form-group">
-                <label for="trainName">Train Name</label>
-                <input type="train" class="form-control" id="trainName" aria-describedby="emailHelp"
-                    placeholder="Enter Train">
+        <div id="train7">
+            <div class="row">
+                <div class="col-sm">
+                    Train Name
+                </div>
+                <div class="col-sm">
+                    Destination
+                </div>
+                <div class="col-sm">
+                    Frequency (min)
+                </div>
+                <div class="col-sm">
+                    Next Arrival
+                </div>
+                <div class="col-sm">
+                    Minutes Away
+                </div>
             </div>
-            <div class="form-group">
-                <label for="desitnation">Destination</label>
-                <input type="destination" class="form-control" id="desitnation" aria-describedby="emailHelp"
-                    placeholder="Enter Destination">
+        </div>
+        <br>
 
+
+
+        <div id="addTrain">
+            <div class="alert alert-primary" role="alert">
+                Add Train
             </div>
-            <div class="form-group">
-                <label for="First Train Time">First Train Time</label>
-                <input type="time" class="form-control" id="firstTrainTime" aria-describedby="emailHelp"
-                    placeholder="First Train Time">
+            <form>
+                <div class="form-group">
+                    <label for="trainName">Train Name</label>
+                    <input type="train" class="form-control" id="trainName" aria-describedby="emailHelp"
+                        placeholder="Enter Train">
+                </div>
+                <div class="form-group">
+                    <label for="desitnation">Destination</label>
+                    <input type="destination" class="form-control" id="destination" aria-describedby="emailHelp"
+                        placeholder="Enter Destination">
 
-            </div>
-            <div class="form-group">
-                <label for="Frequency">Frequency (min)</label>
-                <input type="frequncy" class="form-control" id="frequncy" placeholder="Frequency">
-            </div>
+                </div>
+                <div class="form-group">
+                    <label for="First Train Time">First Train Time</label>
+                    <input type="time" class="form-control" id="firstTrainTime" aria-describedby="emailHelp"
+                        placeholder="First Train Time">
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                </div>
+                <div class="form-group">
+                    <label for="Frequency">Frequency (min)</label>
+                    <input type="frequncy" class="form-control" id="frequency" placeholder="Frequency">
+                </div>
 
-
-    </div>
-
-
-
-
-
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
 
 
+        </div>
 
-    <script src="../assets/app.js"></script>
 
-    <!-- Link to Moment.js should go here -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+
+
+
+
+
+        <script src="../assets/app.js"></script>
+
+
 
 </body>
 
