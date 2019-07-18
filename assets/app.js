@@ -37,6 +37,11 @@ $("#submitButton").on("click", function (event) {
     var firstTrain = $("#firstTrainTime").val().trim();
     var frequency = $("#frequency").val().trim();
 
+    // form validation - if empty - alert
+    if (trainName.length === 0 || destination.length === 0 || firstTrain.length === 0 || frequency.length === 0) {
+        alert("Please Fill All Required Fields");
+    }
+
     console.log(destination);
 
 
@@ -85,11 +90,14 @@ database.ref().on("child_added", function (childSnapshot) {
     var newRow = $("<tr>").append(
         $("<td>").text(trainName),
         $("<td>").text(destination),
-        $("<td>").text(firstTrain),
-        $("<td>").text(frequency,
+        $("<td>").text(currentDate),
+        $("<td>").text(frequency),
+        $("<td>").text(tRemainder),
+        $("<td>").text(tMinutesTillTrain),
 
 
-        ));
+
+    );
 
 
 
@@ -108,9 +116,12 @@ var firstTime = "03:30";
 var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
 console.log(firstTimeConverted);
 
+var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+console.log(currentDate);
+
 // Current Time
 var currentTime = moment();
-console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+console.log("CURRENT TIME: " + moment(currentTime).format("h:mm:ss a"));
 
 // Difference between the times
 var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
