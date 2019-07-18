@@ -49,12 +49,54 @@ $("#submitButton").on("click", function (event) {
 
     database.ref().push(newTrain);
 
-    console.log(newTrain.name)
 
+    console.log(newTrain.name);
+    console.log(newTrain.destination);
+    console.log(newTrain.firstTrain);
+    console.log(newTrain.frequency);
     clickCounter++;
     console.log(clickCounter);
+    alert("Train successfully added");
 
+    // Clears all of the text-boxes
+    $("#trainName").val("");
+    $("#destination").val("");
+    $("#firstTrainTime").val("");
+    $("#frequency").val("");
 });
+
+// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+database.ref().on("child_added", function (childSnapshot) {
+    console.log(childSnapshot.val());
+
+    // Store everything into a variable.
+    var trainName = childSnapshot.val().name;
+    var destination = childSnapshot.val().destination;
+    var firstTrain = childSnapshot.val().firstTrain;
+    var frequency = childSnapshot.val().frequency;
+
+    // Train Info
+    console.log(trainName);
+    console.log(destination);
+    console.log(firstTrain);
+    console.log(frequency);
+
+    // Create the new row
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(destination),
+        $("<td>").text(firstTrain),
+        $("<td>").text(frequency,
+
+
+        ));
+
+
+
+    // Append the new row to the table
+    $("#currentTrain").append(newRow);
+});
+
 
 // Frequency at which the next train comes 
 var tFrequency = 3;
@@ -85,3 +127,49 @@ console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 // Next Train
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
+
+
+
+
+
+
+
+
+
+//     // Prettify the employee start
+//     var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
+
+//     // Calculate the months worked using hardcore math
+//     // To calculate the months worked
+//     var empMonths = moment().diff(moment(empStart, "X"), "months");
+//     console.log(empMonths);
+
+//     // Calculate the total billed rate
+//     var empBilled = empMonths * empRate;
+//     console.log(empBilled);
+
+//     // Create the new row
+//     var newRow = $("<tr>").append(
+//         $("<td>").text(empName),
+//         $("<td>").text(empRole),
+//         $("<td>").text(empStartPretty),
+//         $("<td>").text(empMonths),
+//         $("<td>").text(empRate),
+//         $("<td>").text(empBilled)
+//     );
+
+//     // Append the new row to the table
+//     $("#employee-table > tbody").append(newRow);
+// });
+
+
+
+// ("#currentTrain").append("<tr class='well'><th class='trainName'> " +
+//     snapshot.val().name +
+//     " </th><td class='destination'> " + snapshot.val().destination +
+//     " </td><td class='frequency'> " + snapshot.val().frequency +
+//     " </td><td class='nextArrival'> " + moment(nextTrain).format("hh:mm") + "<td class='minutesAway'> " + tMinutesTillTrain +
+//     " </td></tr>");
+
+
