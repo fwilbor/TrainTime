@@ -60,7 +60,8 @@ $(document).ready(function () {
             name: trainName,
             destination: destination,
             firstTrain: firstTrain,
-            frequency: frequency
+            frequency: frequency,
+            nextArrival: nextArrival
         };
 
         database.ref().push(newTrain);
@@ -90,6 +91,7 @@ $(document).ready(function () {
         var destination = childSnapshot.val().destination;
         var firstTrain = childSnapshot.val().firstTrain;
         var frequency = childSnapshot.val().frequency;
+        var nextArrival = childSnapshot.val().nextArrival;
 
         // Train Info
         console.log(trainName);
@@ -103,19 +105,18 @@ $(document).ready(function () {
             $("<td>").text(destination),
             $("<td>").text(firstTrain),
             $("<td>").text(frequency),
-            $("<td>").text(tRemainder),
+            // Trying to get nextArrival Working and to Show on Page
+            $("<td>").text(nextTrain),
             $("<td>").text(tMinutesTillTrain),
 
 
 
         );
-
-
-
         // Append the new row to the table
         $("#currentTrain").append(newRow);
     });
-
+    console.log("tRemainder");
+    console.log(tRemainder);
 
 
 
@@ -153,7 +154,9 @@ $(document).ready(function () {
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
-
+    //   Next Arrival currently not working, must fix code 
+    var nextArrival = currentTime + frequency;
+    console.log(nextArrival);
 });
 
 
