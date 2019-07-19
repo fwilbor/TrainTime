@@ -81,7 +81,7 @@ $(document).ready(function () {
         $("#frequency").val("");
     });
 
-    // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+    // 3. Create Firebase event for adding trains to the database and a row in the html when a user adds an entry
     database.ref().on("child_added", function (childSnapshot) {
         console.log(childSnapshot.val());
 
@@ -101,7 +101,7 @@ $(document).ready(function () {
         var newRow = $("<tr>").append(
             $("<td>").text(trainName),
             $("<td>").text(destination),
-            $("<td>").text(currentDate),
+            $("<td>").text(firstTrain),
             $("<td>").text(frequency),
             $("<td>").text(tRemainder),
             $("<td>").text(tMinutesTillTrain),
@@ -121,7 +121,7 @@ $(document).ready(function () {
 
 
     // Frequency at which the next train comes 
-    var tFrequency = 3;
+    var tFrequency = 10;
 
     // Time is 3:30 AM
     var firstTime = "03:30";
